@@ -1,6 +1,6 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
-import {Link, Routes, Route, BrowserRouter} from 'react-router-dom';
+import {Link, Routes, Route, BrowserRouter, useNavigate} from 'react-router-dom';
 import {useState} from "react";
 
 const MOVIES = [
@@ -39,14 +39,17 @@ function ListMovies() {
     </div>;
 }
 
-function AddMovie() {
+function AddMovie({onAddMovie}) {
     const [title, setTitle] = useState("");
     const [year, setYear] = useState("");
     const [plot, setPlot] = useState("");
 
+    const navigate = useNavigate();
+
     function handleSubmit(e) {
         e.preventDefault();
-        MOVIES.push({title, year, plot});
+        onAddMovie({title, year, plot});
+        navigate("/");
     }
 
     return <form onSubmit={handleSubmit}>
@@ -61,9 +64,6 @@ function AddMovie() {
             <label>Plot: <textarea value={plot} onChange={e => setPlot(e.target.value)}/></label>
         </div>
         <button>Submit</button>
-        <pre>
-            {JSON.stringify({title, year, plot})}
-        </pre>
     </form>;
 }
 
@@ -72,7 +72,7 @@ function Application() {
         <Routes>
             <Route path="/" element={<FrontPage/>}/>
             <Route path="/movies" element={<ListMovies/>}/>
-            <Route path="/movies/new" element={<AddMovie/>}/>
+            <Route path="/movies/new" element={<AddMovie onAddMovie={m => MOVIES.push(m)}/>}/>
         </Routes>
     </BrowserRouter>;
 }

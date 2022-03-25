@@ -81,7 +81,10 @@ function AddMovie({moviesApi}) {
 function Application() {
     const moviesApi = {
         onAddMovie: async (m) => MOVIES.push(m),
-        listMovies: async () => MOVIES
+        listMovies: async () => {
+            const res = await fetch("/api/movies");
+            return res.json();
+        }
     }
     return <BrowserRouter>
         <Routes>

@@ -40,7 +40,7 @@ function ListMovies({moviesApi}) {
     }
 
     return <div>
-        <h1>List Movies</h1>
+        <h1>All Movies</h1>
         {movies.map(m =>
             <div key={m.title}>
                 <h2>{m.title} ({m.year})</h2>

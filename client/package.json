@@ -16,7 +16,7 @@
     "dev": "parcel index.html",
     "start": "react-scripts start",
     "build": "parcel build index.html",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

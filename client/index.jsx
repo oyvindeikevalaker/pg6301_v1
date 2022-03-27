@@ -37,7 +37,7 @@ function MovieCard({movie}) {
     </div>;
 }
 
-function ListMovies() {
+export function ListMovies() {
     return <div>
         <h1>Movies</h1>
         {MOVIES.map(movie => <MovieCard key={movie.title} movie={movie}/>)}
@@ -94,8 +94,6 @@ function MovieApplication() {
 }
 
 function Application() {
-
-
     return <BrowserRouter>
         <Routes>
             <Route path={"/"} element={<FrontPage/>}/>

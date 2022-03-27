@@ -1,6 +1,6 @@
-import {ListMovies} from "../client";
 import {render} from "react-dom";
 import * as React from "react";
+import {ListMovies} from "../client/movieApplication";
 
 describe("movie pages", () => {
     it("show movies list", () => {
